@@ -123,6 +123,7 @@ class TreeNN(nn.Module):
         # Build output layer
         output_in_dim = sum([self.nodes[output_node].output_dim for output_node in self.output_nodes])
         self.output_layer = nn.Sequential(
+            ## batch norm -> layer norm 202508
             nn.LayerNorm(output_in_dim),
             nn.Linear(output_in_dim, self.output_dim)
         )
@@ -164,3 +165,4 @@ class TreeNN(nn.Module):
 
     def get_total_l0_reg(self):
         return self.total_l0_reg
+
