@@ -261,6 +261,7 @@ class MIOSTONEModel(nn.Module):
         output_layer_in_features = layer_dims[0][1]
         self.output_layer = nn.Sequential(
             nn.LayerNorm(output_layer_in_features),
+            ## batch norm -> layer norm 202508
             nn.Linear(output_layer_in_features, self.out_features)
         )
 
@@ -291,3 +292,4 @@ class MIOSTONEModel(nn.Module):
 
     def get_total_l0_reg(self):
        return self.total_l0_reg
+
